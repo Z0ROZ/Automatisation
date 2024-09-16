@@ -12,8 +12,9 @@ jobs:
       with:
         php-version: '8.1' # Change to your required PHP version
         extensions: mbstring, json, pdo, xml, zip, intl
-    - uses: php-actions/composer@v6
+    - name: Install Composer dependencies
+      uses: php-actions/composer@v6
       with:
-        args: install --no-progress --prefer-dist# or alternative dependency management
+        args: install --no-progress --prefer-dist
     - uses: php-actions/phpunit@v3
     # ... then your own project steps ...
