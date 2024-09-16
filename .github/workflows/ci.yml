@@ -19,7 +19,7 @@ jobs:
     - name: 🔨 Running tests
       uses: php-actions/phpunit@v3
       with:
-          php_extensions: gd sqlite3 dom json libxml mbstring tokenizer xml xmlwriter zip
+          php_extensions: gd mbstring sqlite3 simplexm xdebug
 
 
     - name: Code Coverage Summary Report
