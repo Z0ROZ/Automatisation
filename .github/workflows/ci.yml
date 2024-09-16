@@ -16,19 +16,21 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.1'  # Change to your PHP version
-        extensions: gd, mbstring, sqlite3, simplexml, xdebug  # List required PHP extensions
+        extensions: gd, sqlite3, dom, json, libxml, mbstring, tokenizer, xml ,xmlwriter, zip 
 
-    - name: Install dependencies
-      run: |
-        composer install --no-progress --no-suggest
+    - name: 📝 Install dependencies
+      run: composer install --no-progress --no-suggest
 
-    - name: Installation des dépendances
-      uses: php-actions/phpunit@v3
-      with:
-        php_extensions: gd mbstring sqlite3 simplexml xdebug
-        configuration: phpunit
-
+    - name: 🔨 Run PHPUnit tests with coverage
+      run: vendor/bin/phpunit --coverage-text
 
 
     - name: Code Coverage Summary Report
       uses: irongut/CodeCoverageSummary@v1.3.0
+
+
+    - name: Code Coverage Summary Report
+      uses: irongut/CodeCoverageSummary@v1.3.0
+
+    - name: ✅ Tests completed
+      run: echo "Job status is '${{ job.status }}'"
