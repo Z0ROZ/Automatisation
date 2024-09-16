@@ -25,8 +25,9 @@ jobs:
     - name: Installation des dépendances
       uses: php-actions/phpunit@v3
       with:
-          php_extensions: gd mbstring sqlite3 simplexml xdebug
-          configuration: vendor/bin/phpunit.xml
+        php_extensions: gd mbstring sqlite3 simplexml xdebug
+        working-directory: ./
+
 
 
     - name: Code Coverage Summary Report
