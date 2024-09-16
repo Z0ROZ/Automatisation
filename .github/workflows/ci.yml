@@ -22,10 +22,11 @@ jobs:
       run: |
         composer install --no-progress --no-suggest
 
-    - name: Run PHPUnit tests with coverage
-      run: |
-        vendor/bin/phpunit --coverage-text
-        # If you need the coverage report to be uploaded or saved, you can add more commands here
+    - name: Installation des dépendances
+      uses: php-actions/phpunit@v3
+      with:
+          php_extensions: gd mbstring sqlite3 simplexml xdebug
+          configuration: vendor/bin/phpunit.xml
 
 
     - name: Code Coverage Summary Report
