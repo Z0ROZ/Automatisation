@@ -12,14 +12,20 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1'  # Change to your PHP version
+        extensions: gd, mbstring, sqlite3, simplexml, xdebug  # List required PHP extensions
+
     - name: Install dependencies
       run: |
         composer install --no-progress --no-suggest
 
-    - name: 🔨 Running tests
-      uses: php-actions/phpunit@v3
-      with:
-          php_extensions: gd mbstring sqlite3 simplexm xdebug
+    - name: Run PHPUnit tests with coverage
+      run: |
+        vendor/bin/phpunit --coverage-text
+        # If you need the coverage report to be uploaded or saved, you can add more commands here
 
 
     - name: Code Coverage Summary Report
