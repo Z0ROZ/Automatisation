@@ -1,13 +1,22 @@
 name: CI
-
-on: [push]
-
+on:
+  push:
+  pull_request:
 jobs:
-  build-test:
+  Explore-GitHub-Actions:
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v3
-    - name: Install dependencies
-      run: composer install --working-dir=PrivateBin
-    - uses: php-actions/phpunit@v3
+      - name: Checkout le code
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        run: composer install --working-dir=PrivateBin
+
+      - name: Installation des dépendances
+        uses: php-actions/phpunit@v3
+        with:
+          php_extensions: gd mbstring sqlite3 simplexml xdebug
+          configuration: ./phpunit.xml
+
+      - name: Run PHPUnit tests with coverage
+        run: vendor/bin/phpunit --coverage-text
