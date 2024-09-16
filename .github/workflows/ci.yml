@@ -15,6 +15,8 @@ jobs:
     - name: Install Composer dependencies
       uses: php-actions/composer@v6
       with:
-        args: install --no-progress --prefer-dist
+        args: install --prefer-dist --no-progress --no-suggest
+      env:
+        COMPOSER_MEMORY_LIMIT: -1
     - uses: php-actions/phpunit@v3
     # ... then your own project steps ...
