@@ -8,6 +8,12 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - uses: php-actions/composer@v6 # or alternative dependency management
+    - uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1' # Change to your required PHP version
+        extensions: mbstring, json, pdo, xml, zip, intl
+    - uses: php-actions/composer@v6
+      with:
+        args: install --no-progress --prefer-dist# or alternative dependency management
     - uses: php-actions/phpunit@v3
     # ... then your own project steps ...
