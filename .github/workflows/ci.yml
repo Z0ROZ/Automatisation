@@ -20,12 +20,10 @@ jobs:
 
     - name: Install dependencies
       run: |
-        cd PrivateBin
         composer install --no-progress --no-suggest
 
     - name: Run PHPUnit tests with coverage
       run: |
-        cd PrivateBin
         vendor/bin/phpunit --coverage-text
         # If you need the coverage report to be uploaded or saved, you can add more commands here
 
