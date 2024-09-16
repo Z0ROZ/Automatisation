@@ -22,3 +22,6 @@ jobs:
       run: |
         cd PrivateBin
         composer install --no-progress --no-suggest
+
+    - name: Code Coverage Summary Report
+      uses: irongut/CodeCoverageSummary@v1.3.0
