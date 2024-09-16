@@ -12,7 +12,7 @@ jobs:
       with:
         php-version: '8.0' # Change to your required PHP version
         extensions: mbstring, json, pdo, xml, zip, intl
-    - name: Validate composer.json
+    - name: Validate PrivateBin/composer.json
       run: composer validate
     - uses: php-actions/composer@v6
       with:
