@@ -19,7 +19,7 @@ jobs:
         extensions: gd
 
     - name: Install dependencies
-      uses: php-actions/composer@v6
+      uses: php-actions/composer@v5
 
     - name: Run PHPUnit 
       uses: php-actions/phpunit@v3
