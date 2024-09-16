@@ -1,25 +1,34 @@
 name: CI
+
 on:
   push:
   pull_request:
+
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout le code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v3
 
-      - name: Installation de Composer
-        uses: php-actions/composer@v6
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1'  # Change to your PHP version
+        extensions: gd, mbstring, sqlite3, simplexml, xdebug  # List required PHP extensions
 
-      - name: Installation des dépendances
-        uses: php-actions/phpunit@v3
-        with:
-          php_extensions: gd mbstring sqlite3 simplexml xdebug
-          configuration: ./phpunit.xml
+    - name: Install dependencies
+      run: |
+        cd PrivateBin
+        composer install --no-progress --no-suggest
 
-      - name: Run PHPUnit tests with coverage
-        run: vendor/bin/phpunit --coverage-text
+    - name: Run PHPUnit tests with coverage
+      run: |
+        cd PrivateBin
+        vendor/bin/phpunit --coverage-text
+        # If you need the coverage report to be uploaded or saved, you can add more commands here
+
 
       - name: Code Coverage Summary Report
         uses: irongut/CodeCoverageSummary@v1.3.0
