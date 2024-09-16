@@ -1,23 +1,25 @@
 name: CI
 
-on: [push]
+on: 
+  push:
+  pull_request:
 
 jobs:
   build-test:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - uses: shivammathur/setup-php@v2
+    - name: Checkout codes
+      uses: actions/checkout@v3
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.1' # Change to your required PHP version
-        extensions: mbstring, json, pdo, xml, zip, intl, gd ,sqlite3,dom
-    - name: Validate composer.json
-      run: composer validate
-      working-directory: PrivateBin
-    - name: Install Composer dependencies
-      run: composer install --prefer-dist --no-progress --no-suggest --verbose
-      env:
-        COMPOSER_MEMORY_LIMIT: -1
-    - uses: php-actions/phpunit@v3
-    # ... then your own project steps ...
+        php-version: '8.1'
+        extensions: gd
+
+    - name: Install dependencies
+      uses: php-actions/composer@v6
+
+    - name: Run PHPUnit 
+      uses: php-actions/phpunit@v3
