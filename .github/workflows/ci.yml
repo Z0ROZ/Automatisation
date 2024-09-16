@@ -15,9 +15,8 @@ jobs:
     - name: Validate composer.json
       run: composer validate
       working-directory: PrivateBin
-    - uses: php-actions/composer@v6
-      with:
-        args: install --prefer-dist --no-progress --no-suggest
+    - name: Install Composer dependencies
+      run: composer install --prefer-dist --no-progress --no-suggest --verbose
       env:
         COMPOSER_MEMORY_LIMIT: -1
     - uses: php-actions/phpunit@v3
