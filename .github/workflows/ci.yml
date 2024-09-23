@@ -22,7 +22,7 @@ jobs:
       run: composer install --no-progress --no-suggest
 
     - name: 🔨 Run PHPUnit tests with coverage
-      run: vendor/bin/phpunit --coverage-text
+      run: vendor/bin/phpunit 
 
 
     - name: Code Coverage Summary Report
