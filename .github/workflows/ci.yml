@@ -22,13 +22,13 @@ jobs:
       run: composer install --no-progress --no-suggest
 
     - name: 🔨 Run PHPUnit tests with coverage
-      run: vendor/bin/phpunit 
+      run: vendor/bin/phpunit --coverage-text=test.txt
 
 
     - name: Code Coverage Summary Report
       uses: irongut/CodeCoverageSummary@v1.3.0
       with:
-        filename: log/coverage-clover.xml
+        filename: test.txt
 
     - name: ✅ Tests completed
       run: echo "Job status is '${{ job.status }}'"
