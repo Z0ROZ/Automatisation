@@ -26,10 +26,6 @@ jobs:
       env:
         XDEBUG_MODE: coverage
 
-    - name: Check coverage file
-      run: cat log/coverage-clover.xml
-
-
     - name: Code Coverage Summary Report
       uses: irongut/CodeCoverageSummary@v1.3.0
       with:
