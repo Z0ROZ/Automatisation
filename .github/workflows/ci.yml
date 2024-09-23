@@ -22,7 +22,10 @@ jobs:
       run: composer install --no-progress --no-suggest
 
     - name: 🔨 Run PHPUnit tests with coverage
-      run: vendor/bin/phpunit --coverage-text=coverage-clover.xml
+      run: vendor/bin/phpunit --coverage-clover coverage-clover.xml
+
+    - name: Check coverage file
+      run: cat coverage-clover.xml
 
 
     - name: Code Coverage Summary Report
