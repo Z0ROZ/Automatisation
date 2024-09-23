@@ -1,8 +1,12 @@
-name: push CI
-run-name: ${{ github.repository }} CI [${{ github.event_name }}]
-on: [push]
-env:
-  XDEBUG_MODE: coverage
+`
+
+
+name: CI
+
+on:
+  push:
+  pull_request:
+
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
@@ -29,8 +33,9 @@ jobs:
       uses: irongut/CodeCoverageSummary@v1.3.0
       with:
         filename: log/cobertura.xml
+        badge: true
+        format: markdown
+        output: both
 
     - name: ✅ Exporting coverage to action summary
       run: cat code-coverage-results.md >> $GITHUB_STEP_SUMMARY
-      
-
