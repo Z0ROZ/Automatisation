@@ -22,7 +22,9 @@ jobs:
       run: composer install --no-progress --no-suggest
 
     - name: 🔨 Run PHPUnit tests with coverage
-      run: vendor/bin/phpunit --coverage-clover log/coverage-clover.xml
+      run: vendor/bin/phpunit --coverage-clover log/coverage-clover.xml --verbose
+      env:
+        XDEBUG_MODE: coverage
 
     - name: Check coverage file
       run: cat log/coverage-clover.xml
