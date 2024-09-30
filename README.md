@@ -58,3 +58,7 @@ On peut éventuellement ajouter des paramètres comme :
     thresholds: '60 80'
 ```
 
+# Informations diverses 
+
+Le fichier yml ne s'exécute pas sur notre propre machine mais sur les serveurs de github qui nous sont alloués pour effectuer les différents tests. C'est pour cela que nous ne voyons pas le fichier xml cobertura dans notre répository github.
+
