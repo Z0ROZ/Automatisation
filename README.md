@@ -35,7 +35,26 @@ Enfin, nous exécutons les tests avec une couverture de code via PHPUnit :
 
 # Deuxième partie { COVERAGE } 
 
+```
 - name: Code Coverage Summary Report
       uses: irongut/CodeCoverageSummary@v1.3.0
+      with:
+        filename: log/cobertura.xml
+        badge: true
+        format: markdown
+        output: both
+```
+On définit le ‘name’ de l’action, c'est-à-dire le nom qui serra affiché lors du rapport. Ensuite, on définit le ‘uses’ avec ‘irongut/CodeCoverageSummary@v1.3.0‘ pour utiliser l’outil de couverture de code. Enfin, on précise le fichier de test xml qu’il faut générer au préalable
 
+On peut éventuellement ajouter des paramètres comme : 
+```
+    badge: true
+    fail_below_min: true
+    format: markdown
+    hide_branch_rate: false
+    hide_complexity: true
+    indicators: true
+    output: both
+    thresholds: '60 80'
+```
 
