@@ -7,7 +7,7 @@ Fabio Reveillard
 
 # Première partie { PHPUNIT }
 
-Tout d'abord, nous avons rencontré des problèmes en passant par les dépendances et l'installation standard de PHPUnit. Pour contourner ces problèmes, nous avons choisi d'installer manuellement PHP 8.1 ainsi que toutes les extensions nécessaires afin de garantir le bon fonctionnement des tests. Nous avons également modifié l'installation de phpunit et du composer nous lançons directement une commande. 
+Tout d'abord, nous avons rencontré des problèmes de dépendances pour l'installation standard de PHPUnit et du composer car nous avions mis tous notre code dans un fichier. Pour contourner ces problèmes, nous avons d'abord déplacer le code à la racine du projet mais rien à changer donc nous avons choisi d'installer manuellement PHP 8.1 ainsi que toutes les extensions nécessaires afin de garantir le bon fonctionnement des tests. Nous avons également modifié l'installation de phpunit et du composer, nous lançons directement une commande. 
 
 ## A-Configuration PHP
 Nous utilisons l'action GitHub suivante pour installer PHP 8.1 avec les extensions requises :
