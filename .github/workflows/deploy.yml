@@ -24,4 +24,4 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }} # Utilise le secret FTP_PASSWORD
           local-dir: './'                        
           server-dir: 'www/'
-          exclude: "[ **/.git*, **/.git*/**, **/README.md, **/*.yml, vendor/**]"
+          exclude: "[ **/.git**, **/.git*/**, **/README.md, **/*.yml, vendor/**]"
