@@ -1,0 +1,32 @@
+name: FTP Deploy
+
+on:
+  push:
+    branches:
+      - main  # Déclenche le déploiement lorsque vous poussez sur la branche "main"
+
+jobs:
+  ftp-deploy:
+    name: Deploy site to FTP
+    runs-on: ubuntu-latest
+
+    steps:
+      # Étape pour récupérer le code
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      # Étape pour déployer sur le FTP
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.3.1
+        with:
+          server: ${{ secrets.FTP_HOST }}      # Utilise le secret FTP_HOST
+          username: ${{ secrets.FTP_USERNAME }} # Utilise le secret FTP_USERNAME
+          password: ${{ secrets.FTP_PASSWORD }} # Utilise le secret FTP_PASSWORD
+          local-dir: ./                         # Répertoire local à déployer (./ = racine du dépôt)
+          server-dir: /path/to/remote/directory # Répertoire distant où déployer
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/README.md
+            **/*.yml
+            **/vendor/**
