@@ -19,7 +19,7 @@ jobs:
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@4.3.1
         with:
-          server: ${{ secrets.FTP_HOST }}      # Utilise le secret FTP_HOST
+          server: ${{ secrets.FTP_URL }}      # Utilise le secret FTP_HOST
           username: ${{ secrets.FTP_USERNAME }} # Utilise le secret FTP_USERNAME
           password: ${{ secrets.FTP_PASSWORD }} # Utilise le secret FTP_PASSWORD
           local-dir: ./                         # Répertoire local à déployer (./ = racine du dépôt)
