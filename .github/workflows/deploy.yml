@@ -22,11 +22,6 @@ jobs:
           server: ${{ secrets.FTP_URL }}      # Utilise le secret FTP_HOST
           username: ${{ secrets.FTP_USERNAME }} # Utilise le secret FTP_USERNAME
           password: ${{ secrets.FTP_PASSWORD }} # Utilise le secret FTP_PASSWORD
-          local-dir: ./                         # Répertoire local à déployer (./ = racine du dépôt)
-          server-dir: /path/to/remote/directory # Répertoire distant où déployer
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/README.md
-            **/*.yml
-            **/vendor/**
+          local-dir: ./                         
+          server-dir: www/
+          exclude: "[ **/.git*, **/.git*/**, **/README.md, **/*.yml, vendor/**]"
