@@ -22,6 +22,6 @@ jobs:
           server: ${{ secrets.FTP_URL }}      # Utilise le secret FTP_HOST
           username: ${{ secrets.FTP_USERNAME }} # Utilise le secret FTP_USERNAME
           password: ${{ secrets.FTP_PASSWORD }} # Utilise le secret FTP_PASSWORD
-          local-dir: ./                         
-          server-dir: www/
+          local-dir: './'                        
+          server-dir: 'www/'
           exclude: "[ **/.git*, **/.git*/**, **/README.md, **/*.yml, vendor/**]"
