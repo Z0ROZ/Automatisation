@@ -64,5 +64,27 @@ Il est également possible d’ajouter des paramètres supplémentaires, tels qu
     thresholds: '60 80'
 ```
 
-# Troisième partie { DEPLOIEMENT } 
+# Troisième partie { DÉPLOIEMENT }
+Ce fichier de configuration YAML permet de déployer automatiquement un site sur un serveur FTP dès qu'un commit est poussé sur la branche main. Il utilise l'action GitHub SamKirkland/FTP-Deploy-Action@4.3.1 pour transférer les fichiers du projet vers le serveur FTP.
+La première étape est d'extraire le code, nous le faisons avec un checkout :
+```
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+```
+Ensuite, la deuxième étape consiste à déployer les fichiers sur le serveur FTP en utilisant les informations de connexion stockées dans les secrets de github (FTP_URL, FTP_USERNAME, FTP_PASSWORD). Le contenu local (situé dans ./) est transféré vers le répertoire www/ du serveur, en excluant certains fichiers comme .git, README.md, et les fichiers du dossier vendor déjà présent sur le serveur (trop volumineux donc trop longtemp à être upload).
+```
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@4.3.1
+        with:
+          server: ${{ secrets.FTP_URL }}      # Utilise le secret FTP_HOST
+          username: ${{ secrets.FTP_USERNAME }} # Utilise le secret FTP_USERNAME
+          password: ${{ secrets.FTP_PASSWORD }} # Utilise le secret FTP_PASSWORD
+          local-dir: './'                        
+          server-dir: 'www/'
+          exclude: "[ **/.git**, **/.git*/**, **/README.md, **/*.yml, vendor/**]"
+
+```
+De plus, comme évoqué précédemment, si le code avait été placé dans un sous-dossier, comme cela a été fait auparavant, le site ne serait pas directement accessible via l'URL, car les fichiers ne se trouveraient pas à la racine du répertoire web (www/), ce qui empêcherait l'affichage immédiat du site.
+
 
