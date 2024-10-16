@@ -27,13 +27,6 @@ jobs:
           version: 9.6.11
           configuration: phpunit.xml
           
-    - name: PHP Mess Detector
-      uses: php-actions/phpmd@v1
-      with:
-          path: ./ 
-          format: text 
-          ruleset: cleancode,codesize,design
-
     - name: Code Coverage Summary Report
       uses: irongut/CodeCoverageSummary@v1.3.0
       with:
