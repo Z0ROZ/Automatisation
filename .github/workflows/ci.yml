@@ -22,7 +22,10 @@ jobs:
     - name: PHP Mess Detector
       uses: php-actions/phpmd@v1
       with:
-          path: ./
+          path: ./ 
+          format: text 
+          ruleset: cleancode,codesize,design
+
 
     - name: 🔨 Running tests
       uses: php-actions/phpunit@v3
