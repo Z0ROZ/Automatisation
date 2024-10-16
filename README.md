@@ -5,7 +5,7 @@ Fabio Reveillard
 
 # Informations diverses 
 
--Le fichier yml ne s'exécute pas sur notre propre machine mais sur les serveurs de github qui nous sont alloués pour effectuer les différents tests. C'est pour cela que nous ne voyons pas le fichier xml cobertura dans notre répository github mais nous pouvons voir son contenue avec un cat.
+- Le fichier yml ne s'exécute pas sur notre propre machine mais sur les serveurs de github qui nous sont alloués pour effectuer les différents tests. C'est pour cela que nous ne voyons pas le fichier xml cobertura dans notre répository github mais nous pouvons voir son contenue avec un cat.
 
 
 # Première partie { PHPUNIT }
