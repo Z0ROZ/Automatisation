@@ -35,8 +35,6 @@ Ensuite, nous pouvons ajouter plusieurs "paramètres" à PHPUnit, tels que les e
 
 ```
 
-
-
 # Deuxième partie { COVERAGE } 
 Dans cette deuxième partie, nous générons un rapport de couverture des tests qui sera affiché dans la console. À la fin des tests, un sommaire sous forme de tableau sera présenté, offrant une vue d'ensemble sur l'ensemble des lignes testées par PHPUnit.
 
@@ -63,8 +61,37 @@ Il est également possible d’ajouter des paramètres supplémentaires, tels qu
     output: both
     thresholds: '60 80'
 ```
+# Troisième partie { Linting }
+Nous avons décidé de retirer le linting de notre fichier ci.yml, en conservant uniquement PHPUnit et la génération du code coverage.
+Chaque outil de linting affiche dans la console les différentes erreurs présentes dans le code, ce qui entraîne une erreur dans le fichier YAML.
 
-# Troisième partie { DÉPLOIEMENT }
+## A-PhpStan 
+PHPStan est un outil d'analyse statique pour PHP qui détecte les erreurs de type et les problèmes potentiels dans le code sans l'exécuter. Il vérifie la cohérence des types de données, la validité des appels de méthodes et variables, et identifie les bugs
+```
+ - name: PHP Stan
+   uses: php-actions/phpstan@v3
+      with:
+        path: ./
+
+```
+## B-PhpMd
+PHPMD est un outil d'analyse statique pour PHP qui se concentre sur l'amélioration de la qualité du code en identifiant les mauvaises pratiques et les problèmes potentiels dans le code source. 
+```
+- name: PHP Mess Detector
+  uses: php-actions/phpmd@v1
+  with:
+     path: ./
+```
+## C-PhpCs
+PHPCS est un outil d'analyse statique utilisé pour détecter les violations des normes de codage dans les projets PHP.
+```
+- name: PHP Code Sniffer
+  uses: php-actions/phpcs@v1
+  with:
+     path: ./
+```
+
+# Quatrième partie { DÉPLOIEMENT }
 Ce fichier de configuration YAML permet de déployer automatiquement un site sur un serveur FTP dès qu'un commit est poussé sur la branche main. Il utilise l'action GitHub SamKirkland/FTP-Deploy-Action@4.3.1 pour transférer les fichiers du projet vers le serveur FTP.
 La première étape est d'extraire le code, nous le faisons avec un checkout :
 ```
@@ -86,5 +113,6 @@ Ensuite, la deuxième étape consiste à déployer les fichiers sur le serveur F
 
 ```
 De plus, comme évoqué précédemment, si le code avait été placé dans un sous-dossier, comme cela a été fait auparavant, le site ne serait pas directement accessible via l'URL, car les fichiers ne se trouveraient pas à la racine du répertoire web (www/), ce qui empêcherait l'affichage immédiat du site.
+
 
 
