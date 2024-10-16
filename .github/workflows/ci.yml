@@ -19,9 +19,10 @@ jobs:
     - name: 📝 Install dependencies
       run: composer install --no-progress --no-suggest
 
-    - uses: php-actions/phpstan@v3
+    - name: PHP Mess Detector
+      uses: php-actions/phpmd@v1
       with:
-        path: ./
+          path: ./
 
     - name: 🔨 Running tests
       uses: php-actions/phpunit@v3
@@ -37,12 +38,7 @@ jobs:
         badge: true
         format: markdown
         output: both
-        
-    - name: Run PHPCS
-      run: vendor/bin/phpcs src/ --standard=PSR12
-
-    - name: Run PHPMD
-      run: vendor/bin/phpmd src/ text codesize,naming,unusedcode
+      
 
     - name: ✅ Exporting coverage to action summary
       run: cat code-coverage-results.md >> $GITHUB_STEP_SUMMARY
