@@ -19,13 +19,6 @@ jobs:
     - name: 📝 Install dependencies
       run: composer install --no-progress --no-suggest
 
-    - name: PHP Mess Detector
-      uses: php-actions/phpmd@v1
-      with:
-          path: ./ 
-          format: text 
-          ruleset: cleancode,codesize,design
-
 
     - name: 🔨 Running tests
       uses: php-actions/phpunit@v3
@@ -33,6 +26,13 @@ jobs:
           php_extensions: gd sqlite3 dom json libxml mbstring tokenizer xml xmlwriter zip xdebug
           version: 9.6.11
           configuration: phpunit.xml
+          
+    - name: PHP Mess Detector
+      uses: php-actions/phpmd@v1
+      with:
+          path: ./ 
+          format: text 
+          ruleset: cleancode,codesize,design
 
     - name: Code Coverage Summary Report
       uses: irongut/CodeCoverageSummary@v1.3.0
