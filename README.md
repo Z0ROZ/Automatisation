@@ -61,7 +61,7 @@ Il est également possible d’ajouter des paramètres supplémentaires, tels qu
     output: both
     thresholds: '60 80'
 ```
-# Troisième partie { Linting }
+# Troisième partie { LINTING }
 Nous avons décidé de retirer le linting de notre fichier ci.yml, en conservant uniquement PHPUnit et la génération du code coverage.
 Chaque outil de linting affiche dans la console les différentes erreurs présentes dans le code, ce qui entraîne une erreur dans le fichier YAML.
 
