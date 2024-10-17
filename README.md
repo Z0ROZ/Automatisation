@@ -38,7 +38,7 @@ Ensuite, nous pouvons ajouter plusieurs "paramètres" à PHPUnit, tels que les e
 # Deuxième partie { COVERAGE } 
 Dans cette deuxième partie, nous générons un rapport de couverture des tests qui sera affiché dans la console. À la fin des tests, un sommaire sous forme de tableau sera présenté, offrant une vue d'ensemble sur l'ensemble des lignes testées par PHPUnit.
 
-Nous avons rencontré une erreur de fichier manquant lors de la génération du rapport de couverture, car nous avions oublié d'ajouter la ligne suivante "<cobertura outputFile="log/cobertura.xml"/>" dans le fichier phpunit.xml. 
+Nous avons rencontré une erreur de fichier manquant lors de la génération du rapport de couverture, car nous avions oublié d'ajouter la ligne suivante cobertura outputFile="log/cobertura.xml" dans le fichier phpunit.xml. 
 ```
 - name: Code Coverage Summary Report
       uses: irongut/CodeCoverageSummary@v1.3.0
