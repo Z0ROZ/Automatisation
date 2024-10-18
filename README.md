@@ -13,7 +13,7 @@ Fabio Reveillard
 ## A-Installation des dépendances
 Dans cette partie, nous avons rencontré des problèmes de dépendances pour l'installation standard  du composer. En effet, plusieurs de nos bibliothèques avaient des conflits de versions, ce qui empêchait une installation réussie. De plus, notre code était initialement stocké dans un seul fichier, ce qui compliquait la structure attendue par Composer.
 
-Pour contourner ces problèmes, nous avons décidé de déplacer notre code à la racine du projet, ce qui était censé améliorer la compatibilité avec les règles de Composer. Cependant, cela n'a pas suffi à résoudre les conflits de version. Donc, nous avons décidé d'installer le composer manuellement en ligne de commande dans le yml. 
+Pour contourner ces problèmes, nous avons pris la décision de déplacer notre code à la racine du projet, ce qui était censé améliorer la compatibilité avec les règles de Composer. Cependant, cela n'a pas suffi à résoudre les conflits de version. Donc, nous avons décidé d'installer le composer manuellement en ligne de commande dans le yml. 
 ```
      - name: 📝 Install dependencies
       run: composer install --no-progress --no-suggest
@@ -62,7 +62,7 @@ Il est également possible d’ajouter des paramètres supplémentaires, tels qu
     thresholds: '60 80'
 ```
 # Troisième partie { LINTING }
-Nous avons décidé de retirer le linting de notre fichier ci.yml, en conservant uniquement PHPUnit et la génération du code coverage.
+Nous avons pris la décision de retirer le linting de notre fichier ci.yml, en conservant uniquement PHPUnit et la génération du code coverage.
 Chaque outil de linting affiche dans la console les différentes erreurs présentes dans le code, ce qui entraîne une erreur dans le fichier YAML.
 
 ## A-PhpStan 
